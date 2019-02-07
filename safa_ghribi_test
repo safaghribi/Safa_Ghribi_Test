@@ -1,0 +1,48 @@
+# Question A
+def overlap(point1,point2) :
+    if(point1[0]<point2[0]) :
+        point = point1
+    else :
+        point = point2
+    lista = [i for i in range(point[0],point[1])]
+    if(point2[0]in lista) :
+        return(True)
+    else :
+        return(False)
+        
+# Question B
+def versionCompare(v1,v2) :
+    l1 = v1.strip(".")
+    l2 = v2.strip(".")
+    if (l1 == l2) :
+        return("Equals")
+    else :
+        test = True
+        i=0
+        j=0
+        while(test) :
+            test = (l1[i]==l2[j])
+            if(not test) :
+                if(int(l1[i])<int(l2[j])) :
+                    return(v2+" is greater than "+v1)
+                else :
+                    return(v1+" is greater than "+v2)
+            i +=1
+            j +=1
+            if(i==len(l1)) :
+                return(v2+" is greater than "+v1)
+            if(j==len(l2)) :
+                return(v1+" is greater than "+v2)      
+#print(versionCompare("1.1","1.1"))
+#print(versionCompare("1.2","1.1"))
+#print(versionCompare("1.1.2","1.1.0"))
+#print(versionCompare("1.1.2","1.1.3"))
+
+#Question C
+* This question is more a qualitatif one, I cannot just write some lines of code to summarize a whole API with GeoLocation detection
+because different tools and technologies can be used. The way I imagine it is an API related to a frequently updated databases.
+Each database saves certain recent queries with timestamps and their results. It deletes every information that is expired automatically
+and each database is duplicated in order to be resilient for crashes and failures. For each Geographical region, a database is 
+provided, so, every query GET of any connected computer to the database is directed in a first time to the closest database geographically
+then, to the second closest one... in order to minimize the delay of the queries.
+Every Get query is automatically followed by a PUT or a PATCH query to add or modify or delete information from the database. 
